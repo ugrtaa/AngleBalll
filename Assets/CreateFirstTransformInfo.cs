@@ -23,13 +23,13 @@ public class CreateFirstTransformInfo : MonoBehaviour {
 			if(pointList.Count>1)
 			maxLineLenght = Mathf.Sqrt (Mathf.Abs (((pointList [0].x * pointList [0].x) - (pointList [pointList.Count - 1].x * pointList [pointList.Count - 1].x)) + ((pointList [0].y * pointList [0].y) - (pointList [pointList.Count - 1].y * pointList [pointList.Count - 1].y))));
 		}
-		if (maxLineLenght <= 5) {
+		if (maxLineLenght <= 5 &&pointList.Count>1) {
 			secondDotpos = pointList [1];
 		}
 		if (maxLineLenght > 5) {
 			var mvalue = (pointList [0].y - pointList [1].y) / (pointList [0].x - pointList [1].x);
 			var mangle = Mathf.Atan (mvalue);
-			secondDotpos=new Vector3(pointList[0].x+(5*Mathf.Sin(mangle)),(pointList[0].y+(5*Mathf.Cos(mangle))),0);
+			secondDotpos=new Vector3(pointList[0].x+(5*Mathf.Cos(mangle)),(pointList[0].y+(5*Mathf.Sin(mangle))),0);
 		}
 		Debug.Log (maxLineLenght);
 		if (isItFirstDot == true) {
