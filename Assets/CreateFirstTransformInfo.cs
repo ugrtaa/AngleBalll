@@ -16,6 +16,7 @@ public class CreateFirstTransformInfo : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        //abc
 		if (Input.GetMouseButtonDown (0)) {
 			var Mousepos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			Mousepos.z = 0;
