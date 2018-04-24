@@ -27,12 +27,12 @@ public class CreateFirstTransformInfo : MonoBehaviour {
 			secondDotpos = pointList [1];
 		}
 		if (maxLineLenght > 5) {
-			var mvalue = (pointList [0].y - pointList [1].y) / (pointList [0].x - pointList [1].x);
+			var mvalue = (pointList [1].y - pointList [0].y) / (pointList [1].x - pointList [0].x);
 			var mangle = Mathf.Atan (mvalue);
 			secondDotpos=new Vector3(pointList[0].x+(5*Mathf.Cos(mangle)),(pointList[0].y+(5*Mathf.Sin(mangle))),0);
 		}
 		Debug.Log (maxLineLenght);
-		if (isItFirstDot == true) {
+		if (isItFirstDot == true && pointList.Count>0) {
 			Instantiate (Line, pointList[0], Quaternion.identity);
 			isItFirstDot = false;
 		}
