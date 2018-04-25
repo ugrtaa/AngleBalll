@@ -21,9 +21,10 @@ public class CreateFirstTransformInfo : MonoBehaviour {
 			var Mousepos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			Mousepos.z = 0;
 			pointList.Add (Mousepos);
-            if (pointList.Count > 1) ;
-            maxLineLenght = Mathf.Sqrt(Mathf.Pow((pointList[0].x - pointList[1].x), 2) + Mathf.Pow((pointList[0].y - pointList[1].y), 2));
-			isMousePressed = true;
+			if (pointList.Count > 1) {
+				maxLineLenght = Mathf.Sqrt (Mathf.Pow ((pointList [0].x - pointList [1].x), 2) + Mathf.Pow ((pointList [0].y - pointList [1].y), 2));
+				isMousePressed = true;
+			}
         }
 		if (isMousePressed == true) {
 			if (maxLineLenght <= 2) {
