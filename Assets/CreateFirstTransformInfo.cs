@@ -16,9 +16,6 @@ public class CreateFirstTransformInfo : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //abc
-        //merhaba
-        //degisti
 		if (Input.GetMouseButtonDown (0)) {
 			var Mousepos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			Mousepos.z = 0;
@@ -26,7 +23,7 @@ public class CreateFirstTransformInfo : MonoBehaviour {
 			if(pointList.Count>1)
 			maxLineLenght = Mathf.Sqrt (Mathf.Abs (((pointList [0].x * pointList [0].x) - (pointList [pointList.Count - 1].x * pointList [pointList.Count - 1].x)) + ((pointList [0].y * pointList [0].y) - (pointList [pointList.Count - 1].y * pointList [pointList.Count - 1].y))));
 		}
-		if (maxLineLenght <= 5 && pointList.Count>1) {
+		if (maxLineLenght <= 5) {
 			secondDotpos = pointList [1];
 		}
 		if (maxLineLenght > 5) {
@@ -35,11 +32,11 @@ public class CreateFirstTransformInfo : MonoBehaviour {
 			secondDotpos=new Vector3(pointList[0].x+(5*Mathf.Cos(mangle)),(pointList[0].y+(5*Mathf.Sin(mangle))),0);
 		}
 		Debug.Log (maxLineLenght);
-		if (isItFirstDot == true && pointList.Count>0) {
+		if (isItFirstDot == true) {
 			Instantiate (Line, pointList[0], Quaternion.identity);
 			isItFirstDot = false;
 		}
-		if (isItFirstDot == false &&pointList.Count>1) {
+		if (isItFirstDot == false) {
 			Instantiate (Line, secondDotpos, Quaternion.identity);
 			pointList.Clear();
 			isItFirstDot = true;
