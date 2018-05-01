@@ -7,6 +7,7 @@ public class CreateFirstTransformInfo : MonoBehaviour {
 	public GameObject LineLaser;
 	public static List<Vector3> pointList= new List<Vector3>();
 	public static float rot;
+	public GameObject LineCollision;
 
 
 	private float maxLineLenght;
@@ -55,7 +56,9 @@ public class CreateFirstTransformInfo : MonoBehaviour {
 			}
 
 		}
-		DegreeCalculate ();
+		if (isMousePressed == false && pointList.Count>1) {
+			DegreeCalculate ();
+		}
 	}
 	void DegreeCalculate()
 	{
@@ -72,15 +75,45 @@ public class CreateFirstTransformInfo : MonoBehaviour {
 	{
 		rot = Vector2.Angle (Vector2.left,WhereTo)*InOrOut;
 		var rot1 = Dot1.transform.rotation;
-		rot1.eulerAngles = new Vector3 (rot, -90, 90);
+		rot1.eulerAngles = new Vector3 (0, 0, rot);
 		Dot1.transform.rotation = rot1;
 		var rot2 = Dot2.transform.rotation;
-		rot2.eulerAngles = new Vector3 (rot, -90, 90);
+		rot2.eulerAngles = new Vector3 (0, 0, rot);
 		Dot2.transform.rotation = rot2;
-		var LineLaserTransform=Instantiate (LineLaser, DotPosition, Quaternion.identity) as GameObject;
+		InstantiateLaser (LineLaser);
+		InstantiateLaserCollider (LineCollision);
+
+	}
+	void InstantiateLaser(GameObject Gameobje)
+	{
+		var LineLaserTransform=Instantiate (Gameobje, DotPosition, Quaternion.identity) as GameObject;
+		var LineLaserRotation = LineLaserTransform.transform.rotation;
+		LineLaserRotation.eulerAngles = new Vector3 (90+rot, -90, -90);
+		LineLaserTransform.transform.rotation = LineLaserRotation;
+		var LocalScale = LineLaserTransform.transform.localScale;
+		if (maxLineLenght > 2) {
+			LocalScale.x = 1;
+		}
+		else {
+			LocalScale.x = maxLineLenght/2;
+		}
+		LineLaserTransform.transform.localScale = LocalScale;
+
+	}
+	void InstantiateLaserCollider(GameObject Gameobje)
+	{
+		var LineLaserTransform=Instantiate (Gameobje, DotPosition, Quaternion.identity) as GameObject;
 		var LineLaserRotation = LineLaserTransform.transform.rotation;
 		LineLaserRotation.eulerAngles = new Vector3 (0, 0, rot);
 		LineLaserTransform.transform.rotation = LineLaserRotation;
+		var LocalScale = LineLaserTransform.transform.localScale;
+		if (maxLineLenght > 2) {
+			LocalScale.x = 2;
+		}
+		else {
+			LocalScale.x = maxLineLenght;
+		}
+		LineLaserTransform.transform.localScale = LocalScale;
 	}
 
 }
