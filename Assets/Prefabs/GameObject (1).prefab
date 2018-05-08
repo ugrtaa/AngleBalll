@@ -70,6 +70,7 @@ GameObject:
   - component: {fileID: 4783567067445718}
   - component: {fileID: 95234418421955060}
   - component: {fileID: 61186495492075050}
+  - component: {fileID: 114035628415952388}
   m_Layer: 0
   m_Name: DotLine2
   m_TagString: Untagged
@@ -145,6 +146,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: c0aefb51037057f41a296f2880601291, type: 2}
   m_StaticBatchInfo:
@@ -179,6 +181,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 6b94e61822648d74ba67e9abdea922fd, type: 2}
   m_StaticBatchInfo:
@@ -256,3 +259,15 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114035628415952388
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1902750538655350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c33c979e9e195ac4c8358a3ad1fb4b93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
