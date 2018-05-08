@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4757712907913156}
   - component: {fileID: 198557918466058340}
   - component: {fileID: 199131920957020132}
+  - component: {fileID: 114013043640628494}
   m_Layer: 0
   m_Name: LineParticle
   m_TagString: Untagged
@@ -34,13 +35,25 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1628570135527510}
-  m_LocalRotation: {x: 0.7066287, y: 0.025999868, z: 0.025999868, w: 0.7066287}
-  m_LocalPosition: {x: 11.4563875, y: 5.0135975, z: 1}
-  m_LocalScale: {x: 1, y: 0, z: 1}
+  m_LocalRotation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 94.21399, y: -90, z: -90}
+  m_LocalEulerAnglesHint: {x: 90, y: -90, z: -90}
+--- !u!114 &114013043640628494
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1628570135527510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7f775354676acf41bbece15806caaf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dot: {fileID: 1902750538655350, guid: d35c54bfbc8f59c478f616d49b9e3d67, type: 2}
 --- !u!198 &198557918466058340
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -101,7 +114,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1045683084
+  randomSeed: -1960788906
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -2449,10 +2462,10 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 3
-    type: 0
-    collisionMode: 0
+    type: 1
+    collisionMode: 1
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
     multiplyColliderForceByParticleSpeed: 0
@@ -2548,7 +2561,7 @@ ParticleSystem:
     m_EnergyLossOnCollision:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -2588,14 +2601,14 @@ ParticleSystem:
         m_RotationOrder: 4
     minKillSpeed: 0
     maxKillSpeed: 10000
-    radiusScale: 1
+    radiusScale: 0.39
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 256
     maxCollisionShapes: 256
     quality: 0
-    voxelSize: 0.5
-    collisionMessages: 0
+    voxelSize: 12.3
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -3451,7 +3464,7 @@ ParticleSystemRenderer:
   m_Pivot: {x: 0, y: 0, z: 0}
   m_UseCustomVertexStreams: 0
   m_VertexStreams: 00010304
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}

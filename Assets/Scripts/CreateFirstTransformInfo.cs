@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CreateFirstTransformInfo : MonoBehaviour {
-	public GameObject Line;
+	public GameObject Line1;
+	public GameObject Line2;
 	public GameObject LineLaser;
 	public static List<Vector3> pointList= new List<Vector3>();
 	public static float rot;
@@ -16,14 +17,18 @@ public class CreateFirstTransformInfo : MonoBehaviour {
 	private bool isMousePressed=false;
 	private GameObject Dot1,Dot2;
 	private Vector3 DotPosition;
+	private GameObject LineHolder;
+
 	// Use this for initialization
 	void Start () {
-		
+		if (LineHolder == null) {
+			LineHolder = new GameObject ();
+			LineHolder.name="LineHolder";
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log (rot);
 		if (Input.GetMouseButtonDown (0)) {
 			var Mousepos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			Mousepos.z = 0;
@@ -42,15 +47,15 @@ public class CreateFirstTransformInfo : MonoBehaviour {
 				secondDotpos = new Vector3 (pointList [0].x + (2 * Mathf.Cos (mangle)), (pointList [0].y + (2 * Mathf.Sin (mangle))), 0);
 			}
 			if (isItFirstDot == true) {
-				Dot1=Instantiate (Line, pointList [0],Quaternion.identity) as GameObject;
+				Dot1=Instantiate (Line1, pointList [0],Quaternion.identity) as GameObject;
+				Dot1.transform.parent = LineHolder.transform;
 				DotPosition = Dot1.transform.position;
 				DotPosition.z = 1;
-
-				Debug.Log (DotPosition);
 				isItFirstDot = false;
 			}
 			if (isItFirstDot == false && pointList.Count > 1) {
-				Dot2=Instantiate (Line, secondDotpos, Quaternion.identity) as GameObject;
+				Dot2=Instantiate (Line2, secondDotpos, Quaternion.identity) as GameObject;
+				Dot2.transform.parent = LineHolder.transform;
 				isItFirstDot = true;
 				isMousePressed = false;
 			}
@@ -87,6 +92,7 @@ public class CreateFirstTransformInfo : MonoBehaviour {
 	void InstantiateLaser(GameObject Gameobje)
 	{
 		var LineLaserTransform=Instantiate (Gameobje, DotPosition, Quaternion.identity) as GameObject;
+		LineLaserTransform.transform.parent = LineHolder.transform;
 		var LineLaserRotation = LineLaserTransform.transform.rotation;
 		LineLaserRotation.eulerAngles = new Vector3 (90+rot, -90, -90);
 		LineLaserTransform.transform.rotation = LineLaserRotation;
@@ -103,6 +109,7 @@ public class CreateFirstTransformInfo : MonoBehaviour {
 	void InstantiateLaserCollider(GameObject Gameobje)
 	{
 		var LineLaserTransform=Instantiate (Gameobje, DotPosition, Quaternion.identity) as GameObject;
+		LineLaserTransform.transform.parent = LineHolder.transform;
 		var LineLaserRotation = LineLaserTransform.transform.rotation;
 		LineLaserRotation.eulerAngles = new Vector3 (0, 0, rot);
 		LineLaserTransform.transform.rotation = LineLaserRotation;
